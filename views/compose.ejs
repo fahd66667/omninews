@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compose Dispatch // OmniNews</title>
+  <style>
+    :root {
+      --bg-main: #0a0a0c;
+      --gold: #d4af37;
+      --glass-bg: rgba(26, 26, 30, 0.45);
+      --glass-border: rgba(212, 175, 55, 0.15);
+      --text-main: #f0f0f3;
+      --tactical-orange: #ff5500;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .form-container {
+      max-width: 650px;
+      margin: 5rem auto;
+      padding: 3rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    h1 {
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 0;
+      margin-bottom: 2rem;
+      border-left: 3px solid var(--gold);
+      padding-left: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 1rem;
+      background: rgba(10, 10, 12, 0.6);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus, textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+    }
+
+    textarea {
+      height: 250px;
+      resize: vertical;
+      font-family: inherit;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .btn-back {
+      color: #8a8a93;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-back:hover { color: var(--text-main); }
+
+    .btn-submit {
+      background: linear-gradient(135deg, var(--gold), #aa8c2c);
+      color: #000;
+      border: none;
+      padding: 0.8rem 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h1>New Editorial Wire</h1>
+    <form action="/compose" method="POST">
+      <div class="form-group">
+        <label>Article Title</label>
+        <input type="text" name="title" placeholder="Enter headline text..." required autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label>Content Body</label>
+        <textarea name="content" placeholder="Type your dynamic reporting details here..." required></textarea>
+      </div>
+      <div class="actions">
+        <a href="/" class="btn-back">← Cancel Dispatch</a>
+        <button type="submit" class="btn-submit">Transmit Post</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
