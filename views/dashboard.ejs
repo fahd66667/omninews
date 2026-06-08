@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniNews Terminal — Workspace</title>
+    <style>
+        :root {
+            --bg-deep: #0a0b10;
+            --card-glass: rgba(20, 22, 33, 0.65);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --accent-gold: #d4af37;
+            --text-primary: #f0f2f5;
+            --text-muted: #8a8f98;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background: var(--bg-deep); color: var(--text-primary); min-height: 100vh; padding: 40px 20px; }
+        .dashboard-wrapper { max-width: 900px; margin: 0 auto; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-bottom: 1px solid var(--border-glass); padding-bottom: 20px; }
+        h1 { font-weight: 800; letter-spacing: 1px; }
+        h1 span { color: var(--accent-gold); }
+        .action-bar { display: flex; gap: 15px; }
+        .btn { text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: 0.2s; }
+        .btn-gold { background: var(--accent-gold); color: #000; }
+        .btn-outline { border: 1px solid var(--border-glass); color: var(--text-muted); }
+        .btn:hover { opacity: 0.9; }
+        .post-card { background: var(--card-glass); border: 1px solid var(--border-glass); border-radius: 12px; padding: 25px; margin-bottom: 20px; }
+        .post-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; }
+        .post-meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .post-body { color: #cdd1da; line-height: 1.6; }
+        .empty-state { text-align: center; padding: 60px 20px; color: var(--text-muted); border: 1px dashed var(--border-glass); border-radius: 12px; }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <header>
+            <div>
+                <h1>Welcome back, <span><%= username %></span></h1>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">OmniNews Publisher Console</p>
+            </div>
+            <div class="action-bar">
+                <a href="/compose" class="btn btn-gold">+ Write New Log</a>
+                <a href="/" class="btn btn-outline">Public Feed</a>
+                <a href="/logout" class="btn btn-outline" style="color: #ff6b6b;">Disconnect</a>
+            </div>
+        </header>
+
+        <h2 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 20px;">Your Published Wire Logs</h2>
+
+        <% if (posts.length === 0) { %>
+            <div class="empty-state">
+                <p style="font-size: 1.1rem; margin-bottom: 15px;">No active entries mapped to this profile terminal yet.</p>
+                <a href="/compose" class="btn btn-gold" style="padding: 8px 16px; font-size: 0.85rem;">Publish Your First Post</a>
+            </div>
+        <% } else { %>
+            <% posts.forEach(post => { %>
+                <div class="post-card">
+                    <div class="post-title"><%= post.title %></div>
+                    <div class="post-meta">Filed under: <%= post.author %> &bull; <%= new Date(post.createdAt).toLocaleDateString() %></div>
+                    <div class="post-body"><%= post.content %></div>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+
+</body>
+</html>
