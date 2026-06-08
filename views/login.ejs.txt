@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>OmniBlog — Author Sign In</title>
+    <style>
+        body { background: #0f111a; color: #f1f3f9; font-family: system-ui; margin: 0; }
+        .form-wrapper { max-width: 380px; margin: 100px auto; padding: 40px; background: rgba(26,29,46,0.6); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; backdrop-filter: blur(8px); }
+        input { width: 100%; padding: 12px; margin: 10px 0 20px; background: #1a1d2e; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #e2ba43; border: none; font-weight: bold; border-radius: 6px; cursor: pointer; color: #000; font-size: 1rem; }
+    </style>
+</head>
+<body>
+    <%- navbar %>
+    <div class="form-wrapper">
+        <h2 style="color: #e2ba43; margin-top: 0; margin-bottom: 20px;">Sign in to your Blog</h2>
+        <form action="/api/login" method="POST">
+            <label>Email Address</label><input type="email" name="email" required>
+            <label>Password</label><input type="password" name="password" required>
+            <button type="submit">Sign In</button>
+        </form>
+        <p style="margin-top: 20px; font-size: 0.9rem; text-align: center; color: #9aa0b1;">New writer? <a href="/signup" style="color: #e2ba43; text-decoration: none;">Create an account</a></p>
+    </div>
+</body>
+</html>
